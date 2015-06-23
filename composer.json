@@ -1,5 +1,5 @@
 {
-    "name": "mez/zf2-resque-ex",
+    "name": "zf2-resque-ex/zf2-resque-ex",
     "description": "Creates a ZF2 module and wraps the php-resque project into a service that can interact with the service locator.",
     "type": "library",
     "keywords": [
