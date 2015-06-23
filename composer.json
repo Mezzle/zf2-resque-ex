@@ -11,6 +11,7 @@
         "resque"
     ],
     "license": "BSD-3-Clause",
+    "homepage": "https://www.sourceguru.net/zf2-resque-ex/",
     "require": {
         "php": ">=5.4",
         "kamisama/php-resque-ex": "~1.3",
