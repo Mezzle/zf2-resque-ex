@@ -1,0 +1,30 @@
+{
+    "name": "mez/zf2-resque-ex",
+    "description": "Creates a ZF2 module and wraps the php-resque project into a service that can interact with the service locator.",
+    "type": "library",
+    "keywords": [
+        "php-resque",
+        "queue",
+        "worker",
+        "job",
+        "redis",
+        "resque"
+    ],
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.4",
+        "kamisama/php-resque-ex": "~1.3",
+        "zendframework/zend-console": "~2.5",
+        "zendframework/zend-modulemanager": "~2.5",
+        "zendframework/zend-servicemanager": "~2.5",
+        "zendframework/zend-stdlib": "~2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zf2ResqueEx\\": "src/"
+        }
+    },
+    "conflict": {
+        "dmregister/zf2-resque": "*"
+    }
+}
