@@ -35,6 +35,8 @@ class ResqueProxyFactory implements FactoryInterface
 
         $resque_proxy = new ResqueProxy($config);
 
+        $resque_proxy->connect();
+
         return $resque_proxy;
     }
 }

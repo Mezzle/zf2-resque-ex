@@ -46,15 +46,15 @@ class ResqueProxy
 
     /**
      * setBackend
-     *
-     * @param string $server
-     * @param int $database
-     * @param string $namespace
-     * @param string|null $password
      */
-    public function setBackend($server, $database = 0, $namespace = 'resque', $password = null)
+    public function connect()
     {
-        Resque::setBackend($server, $database, $namespace, $password);
+        Resque::setBackend(
+            $this->options->getServer(),
+            $this->options->getDatabase(),
+            $this->options->getNamespace(),
+            $this->options->getPassword()
+        );
     }
 
     /**
@@ -71,6 +71,7 @@ class ResqueProxy
      * size
      *
      * @param $queue
+     *
      * @return int
      */
     public function size($queue)
