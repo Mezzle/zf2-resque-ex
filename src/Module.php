@@ -141,11 +141,12 @@ class Module implements
     {
         return [
             'invokables' => [
-                'Zf2ResqueEx\Event\EventAggregator' => 'Zf2ResqueEx\Event\EventAggregator',
+                Event\EventAggregator::class => Event\EventAggregator::class,
+                Service\Worker::class => Service\Worker::class,
             ],
             'factories' => [
-                'Resque' => 'Zf2ResqueEx\Service\ResqueProxyFactory'
-            ]
+                'Resque' => Service\ResqueProxyFactory::class,
+            ],
         ];
     }
 
@@ -173,7 +174,7 @@ class Module implements
     protected function bootstrapEvents()
     {
         $this->getServiceLocator()
-            ->get('Zf2ResqueEx\Event\EventAggregator')
+            ->get(Event\EventAggregator::class)
             ->attach();
     }
 }
