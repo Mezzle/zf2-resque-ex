@@ -13,14 +13,14 @@ use Zf2ResqueEx\Options\ResqueOptions;
  */
 class ResqueProxy
 {
-    const KEY_FAILED = 'resque:failed';
-    const KEY_STAT_FAILED = 'resque:stat:failed';
-    const KEY_STAT_PROCESSED = 'resque:stat:processed';
-    const KEY_WORKERS = 'resque:workers';
+    const KEY_FAILED = 'failed';
+    const KEY_STAT_FAILED = 'stat:failed';
+    const KEY_STAT_PROCESSED = 'stat:processed';
+    const KEY_WORKERS = 'workers';
 
-    const PATTERN_WORKER = 'resque:worker:%s';
-    const PATTERN_WORKER_PROCESSED = 'resque:stat:processed:%s';
-    const PATTERN_WORKER_STARTED = 'resque:worker:%s:started';
+    const PATTERN_WORKER = 'worker:%s';
+    const PATTERN_WORKER_PROCESSED = 'stat:processed:%s';
+    const PATTERN_WORKER_STARTED = 'worker:%s:started';
 
     /** @var array|ResqueOptions $options */
     protected $options;
@@ -88,7 +88,7 @@ class ResqueProxy
      */
     public function getFailed()
     {
-        return (int)$this->redis()->get(self::KEY_STAT_FAILED);
+        return (int) $this->redis()->get(self::KEY_STAT_FAILED);
     }
 
     /**
@@ -109,7 +109,7 @@ class ResqueProxy
      */
     public function getProcessed()
     {
-        return (int)$this->redis()->get(self::KEY_STAT_PROCESSED);
+        return (int) $this->redis()->get(self::KEY_STAT_PROCESSED);
     }
 
     /**
@@ -141,7 +141,7 @@ class ResqueProxy
      */
     public function getFailuresPerQueue()
     {
-        $failure_count = $this->redis()->lLen(self::KEY_FAILED);
+        $failure_count = $this->redis()->llen(self::KEY_FAILED);
 
         $failures = [];
 
@@ -159,7 +159,7 @@ class ResqueProxy
 
             $failures[$queue][] = [
                 'id' => $id,
-                'failure' => $failure
+                'failure' => $failure,
             ];
         }
 
