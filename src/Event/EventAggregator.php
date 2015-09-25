@@ -29,8 +29,7 @@ class EventAggregator implements EventManagerAwareInterface
         'beforePerform',
         'afterPerform',
         'onFailure',
-        'beforeEnqueue',
-        'afterEnqueue'
+        'afterEnqueue',
     ];
 
     /**
@@ -39,9 +38,8 @@ class EventAggregator implements EventManagerAwareInterface
      * @param string $class
      * @param array $args
      * @param string $queue
-     * @param string $id
      */
-    public function afterEnqueue($class, array $args, $queue, $id)
+    public function afterEnqueue($class, array $args, $queue)
     {
         $this->getEventManager()
             ->trigger(
@@ -51,7 +49,6 @@ class EventAggregator implements EventManagerAwareInterface
                     'class' => $class,
                     'args' => $args,
                     'queue' => $queue,
-                    'id' => $id
                 ]
             );
     }
@@ -92,29 +89,6 @@ class EventAggregator implements EventManagerAwareInterface
         foreach ($this->resque_events as $event) {
             Resque_Event::listen($event, [$this, $event]);
         }
-    }
-
-    /**
-     * beforeEnqueue
-     *
-     * @param string $class
-     * @param array $args
-     * @param string $queue
-     * @param string $id
-     */
-    public function beforeEnqueue($class, $args, $queue, $id)
-    {
-        $this->getEventManager()
-            ->trigger(
-                'resque.beforeEnqueue',
-                $this,
-                [
-                    'class' => $class,
-                    'args' => $args,
-                    'queue' => $queue,
-                    'id' => $id
-                ]
-            );
     }
 
     /**
