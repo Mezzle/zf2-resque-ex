@@ -142,13 +142,10 @@ class Module implements
         return [
             'invokables' => [
                 Event\EventAggregator::class => Event\EventAggregator::class,
-                Service\Worker::class => Service\Worker::class,
+                Service\WorkerFactory::class => Service\WorkerFactory::class,
             ],
             'factories' => [
                 'Resque' => Service\ResqueProxyFactory::class,
-            ],
-            'shared' => [
-                Service\Worker::class => false,
             ],
         ];
     }
