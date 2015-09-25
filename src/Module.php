@@ -35,17 +35,6 @@ class Module implements
     use EventManagerAwareTrait;
     use ServiceLocatorAwareTrait;
 
-    protected $events = [
-        'beforeFirstFork',
-        'beforeFork',
-        'afterFork',
-        'beforePerform',
-        'afterPerform',
-        'onFailure',
-        'beforeEnqueue',
-        'afterEnqueue'
-    ];
-
     /**
      * eventCallback
      *

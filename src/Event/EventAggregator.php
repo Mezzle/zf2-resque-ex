@@ -22,7 +22,7 @@ class EventAggregator implements EventManagerAwareInterface
     /**
      * @var array $events
      */
-    protected $events = [
+    protected $resque_events = [
         'beforeFirstFork',
         'beforeFork',
         'afterFork',
@@ -89,7 +89,7 @@ class EventAggregator implements EventManagerAwareInterface
      */
     public function attach()
     {
-        foreach ($this->events as $event) {
+        foreach ($this->resque_events as $event) {
             Resque_Event::listen($event, [$this, $event]);
         }
     }
