@@ -147,6 +147,9 @@ class Module implements
             'factories' => [
                 'Resque' => Service\ResqueProxyFactory::class,
             ],
+            'shared' => [
+                Service\Worker::class => false,
+            ],
         ];
     }
 
