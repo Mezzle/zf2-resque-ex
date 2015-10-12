@@ -68,7 +68,7 @@ class Job extends Resque_Job implements ServiceLocatorAwareInterface
                 $this->instance = $this->getServiceLocator()->get($this->payload['class']);
 
                 $this->instance->job = $this;
-                $this->instance->args = $this;
+                $this->instance->args = $this->getArguments();
                 $this->instance->queue = $this->queue;
 
                 if (!method_exists($this->instance, 'perform')) {
