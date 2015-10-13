@@ -61,7 +61,6 @@ class ResqueProxy
         Resque::setBackend(
             $this->options->getServer(),
             $this->options->getDatabase(),
-            $this->options->getNamespace(),
             $this->options->getPassword()
         );
     }

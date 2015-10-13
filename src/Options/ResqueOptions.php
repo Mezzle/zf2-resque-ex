@@ -15,12 +15,8 @@ class ResqueOptions extends AbstractOptions
     protected $server;
 
     /** @var int $database */
-    protected $database = 0;
 
-    /** @var string $namespace */
-    protected $namespace = 'resque';
-
-    /** @var null\string $password */
+    /** @var null|string $password */
     protected $password = null;
 
     /**
@@ -64,28 +60,6 @@ class ResqueOptions extends AbstractOptions
     public function setDatabase($database)
     {
         $this->database = $database;
-        return $this;
-    }
-
-    /**
-     * getNamespace
-     *
-     * @return string
-     */
-    public function getNamespace()
-    {
-        return $this->namespace;
-    }
-
-    /**
-     * setNamespace
-     *
-     * @param string $namespace
-     * @return ResqueOptions
-     */
-    public function setNamespace($namespace)
-    {
-        $this->namespace = $namespace;
         return $this;
     }
 
