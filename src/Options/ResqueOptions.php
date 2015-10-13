@@ -15,6 +15,7 @@ class ResqueOptions extends AbstractOptions
     protected $server;
 
     /** @var int $database */
+    protected $database =0;
 
     /** @var null|string $password */
     protected $password = null;
